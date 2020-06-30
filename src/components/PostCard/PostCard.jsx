@@ -14,14 +14,13 @@ export default function PostCard({post}) {
     const { price, expenses } = post.posting_prices[0]
 
     return (
-        <section className={styles.postCard}>
+        <section className={styles.postCard} style={{borderColor: 'green'}}>
             <div className={styles.imgContainer}>
                 <img src={posting_picture} alt={ posting_slug }/>
                 <div className={styles.costsContainer}>
                     <div className={styles.cost}>$ { price.amount }</div>
-                    { expenses && <span className={styles.expenses}>+ $ { expenses.amount } Expensas</span> }
+                    { expenses && <div className={styles.expenses}>+ $ { expenses.amount } Expensas</div> }
                 </div>
-                
             </div>
             <div className={styles.descriptionContainer}>
                 <h2>{ title }</h2>

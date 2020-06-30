@@ -3,24 +3,31 @@
     flex-direction: column;
     width: 100%;
     margin-bottom: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     background-color: #fff;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    border-top: .2rem solid;
+    overflow: hidden;
 }
 
 .imgContainer {
+    
     img {
         width: 100%;
     }
+
     .costsContainer{
         padding: 0.5rem 1rem;
     }
+
     .cost{
         font-weight: 500;
         font-size: 1.5rem;
         color: #333;
     }
+
     .expenses{
+        margin: 1rem 0 0 0;
         font-weight: 400;
         font-size: .9rem;
         color: #6e6e6e;
@@ -36,14 +43,27 @@
         font-size: 1rem;
         margin-bottom: .5rem;
     }
+
     p {
+        margin: 0.5rem 0; 
         font-weight: 400;
-        font-size: .9rem;
+        font-size: .85rem;
         color: #848484;
     }
-    .location .publish_date{
+
+    .location, .publish_date{
         font-weight: 500;
         font-size: .9rem;
         color: #333;
+    }
+}
+
+@media screen and (min-width: 60rem) {
+    .postCard {
+        flex-direction: row;
+    }
+
+    .imgContainer {
+        // width: 50rem;
     }
 }
