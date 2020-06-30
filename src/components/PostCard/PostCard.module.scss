@@ -12,9 +12,18 @@
     img {
         width: 100%;
     }
-
-    div {
-        padding: 0 1rem;
+    .costsContainer{
+        padding: 0.5rem 1rem;
+    }
+    .cost{
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: #333;
+    }
+    .expenses{
+        font-weight: 400;
+        font-size: .9rem;
+        color: #6e6e6e;
     }
 }
 
@@ -23,5 +32,18 @@
 
     h2 {
         color: #1ea7dd;
+        font-weight: 400;
+        font-size: 1rem;
+        margin-bottom: .5rem;
+    }
+    p {
+        font-weight: 400;
+        font-size: .9rem;
+        color: #848484;
+    }
+    .location .publish_date{
+        font-weight: 500;
+        font-size: .9rem;
+        color: #333;
     }
 }

@@ -17,14 +17,17 @@ export default function PostCard({post}) {
         <section className={styles.postCard}>
             <div className={styles.imgContainer}>
                 <img src={posting_picture} alt={ posting_slug }/>
-                <div>$ { price.amount }</div>
-                { expenses && <span>+ $ { expenses.amount } Expensas</span> }
+                <div className={styles.costsContainer}>
+                    <div className={styles.cost}>$ { price.amount }</div>
+                    { expenses && <span className={styles.expenses}>+ $ { expenses.amount } Expensas</span> }
+                </div>
+                
             </div>
             <div className={styles.descriptionContainer}>
                 <h2>{ title }</h2>
-                <span>{ posting_location.address }, { posting_location.zone }, { posting_location.city }</span>
+                <span className={styles.location}>{ posting_location.address }, { posting_location.zone }, { posting_location.city }</span>
                 <p>{ posting_description }</p>
-                <div>publicado hace { publish_date } días</div>
+                <div className={styles.publish_date}>publicado hace { publish_date } días</div>
             </div>
         </section>
     )   
