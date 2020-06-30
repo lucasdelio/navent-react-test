@@ -4,14 +4,12 @@ import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Router from "./route";
-import Loader from "./components/Loader/Loader";
 import "./globals.scss";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       {Router}
-      <Loader />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -1,31 +1,26 @@
-import React, { useEffect } from 'react'
-import axiosLoader, { getCommentsCfg } from '../../axiosConfigs'
+import React, { useEffect, useState } from 'react'
+import CONSTANTS from '../../constants'
 import styles from './HomePage.module.scss'
+import PostCard from '../../components/PostCard/PostCard'
 
 const HomePage = () => {
-    let postId = 1;
+    const [postings, setPostings] = useState([])
 
     useEffect(() => {
-        axiosLoader({
-            config: getCommentsCfg(postId), // add your axios configs to /axiosConfigs.js
-            onSuccess: res => {
-                console.log('Api data:')
-                console.log(res.data)
-            },
-            onError: err => {
-                console.log(err)
-            } 
-        })
-    }, [postId])
+        console.log(CONSTANTS.POSTINGS)
+        setPostings(CONSTANTS.POSTINGS)
+    }, [])
 
     return (
         <>
-            <main className={styles.mainCointainer} >
-                <h1>Super! <span role="img" aria-label="Super">🦸‍♂️</span></h1>
-                <a href="https://github.com/damiandelio/cra-template-super" target="_blank" rel="noopener noreferrer">
-                    GitHub
-                </a>
-            </main>
+            <div className={styles.homePageContainer}>
+                <div className={styles.container}>
+                    <nav>nav</nav>
+                    <main>
+                        { postings.map( post => <PostCard key={post.posting_id} post={post} /> ) }                    
+                    </main>
+                </div>
+            </div>
         </>
     )
 }
