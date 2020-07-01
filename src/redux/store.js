@@ -1,13 +1,20 @@
-import { combineReducers, createStore } from "redux";
-// Reducers
-import loaderReducer from "./modules/loader";
+import { combineReducers, createStore } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import favoritesReducer from './modules/favorites'
 
-const rootReducer = () => {
+function getRootReducer(){
   return combineReducers({
-    loaderReducer,
+    favoritesReducer,
   });
 };
 
-const store = createStore(rootReducer());
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, getRootReducer())
+
+export default createStore( getRootReducer() )
+//export const persistor = persistStore(store)

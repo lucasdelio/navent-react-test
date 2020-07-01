@@ -6,13 +6,16 @@ import store from "./redux/store";
 import Router from "./route";
 import "./globals.scss";
 import moment from 'moment/min/moment-with-locales'
+import { PersistGate } from 'redux-persist/integration/react'
 
 moment.locale('es')
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      {Router}
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+        {Router}
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

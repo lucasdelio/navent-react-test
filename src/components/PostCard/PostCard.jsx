@@ -6,11 +6,14 @@ import moment from 'moment/min/moment-with-locales'
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { IconButton } from '@material-ui/core';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { favoritesSelector, swapFavorite } from './../../redux/modules/favorites'
 
 const SUPERHIGHLIGHTED = 'SUPERHIGHLIGHTED'
 const HIGHLIGHTED = 'HIGHLIGHTED'
 const SUPERHIGHLIGHTED_COLOR = '#8265d9'
 const HIGHLIGHTED_COLOR = '#5ace9f'
+const FAVORITE_ICON_COLOR = '#3b3b3b'
 
 function getPublicationPlanColor(plan) {
     if(plan===SUPERHIGHLIGHTED)
@@ -35,12 +38,14 @@ export default function PostCard({ post }) {
     } = post
 
     const { price, expenses } = post.posting_prices[0]
+    const favorites = useSelector(favoritesSelector, shallowEqual)
+    const dispatch = useDispatch()
 
     return (
         <section className={styles.postCard} style={getPublicationPlanColor(post.publication_plan)}>
             <div className={styles.imgContainer}>
-                <IconButton className={styles.favoriteButton}>
-                    <FavoriteBorderIcon style={{color: '#3b3b3b'}} />
+                <IconButton onClick={()=> dispatch(swapFavorite(post.posting_id)) } className={styles.favoriteButton}>
+                    <FavoriteBorderIcon style={{color: favorites.includes(post.posting_id)? 'red': FAVORITE_ICON_COLOR }} />
                 </IconButton>
                 <img src={posting_picture} alt={posting_slug}/>
                 <div className={styles.costsContainer}>
