@@ -53,5 +53,5 @@ export default function PostCard({ post }) {
                 <div className={styles.publish_date}>{getPublishTimeFromNow(publish_date)}</div>
             </div>
         </section>
-    )   
+    )
 }
