@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './PostCard.module.scss'
 import {numberWithCommas} from '../../utils/utils'
 import moment from 'moment/min/moment-with-locales'
+// import LinesEllipsis from 'react-lines-ellipsis'
 
 const SUPERHIGHLIGHTED = 'SUPERHIGHLIGHTED'
 const HIGHLIGHTED = 'HIGHLIGHTED'
@@ -49,8 +50,18 @@ export default function PostCard({ post }) {
                     <h2>{ title }</h2>
                     <span className={styles.location}>{ posting_location.address }, { posting_location.zone }, { posting_location.city }</span>
                 </div>
-                <p>{ posting_description }</p>
-                <div className={styles.publish_date}>{getPublishTimeFromNow(publish_date)}</div>
+                    <p>{ posting_description }</p>
+                    {/* <LinesEllipsis
+                        text={ posting_description }
+                        maxLine='4'
+                        basedOn='words'
+                        component='p'
+                        trimRight
+                    /> */}
+                <div className={styles.dateAndContactContainer}>
+                    <div className={styles.publish_date}>{getPublishTimeFromNow(publish_date)}</div>
+                    <button onClick={()=>{}}>Contactar</button>
+                </div>
             </div>
         </section>
     )

@@ -4,8 +4,8 @@ import styles from './HomePage.module.scss'
 import PostCard from '../../components/PostCard/PostCard'
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel'
 import SearchIcon from '@material-ui/icons/Search';
-import {RadioGroup, Radio, FormControlLabel,
-    FormControl, TextField, IconButton} from '@material-ui/core';
+import { RadioGroup, Radio, FormControlLabel,
+    FormControl, TextField, IconButton } from '@material-ui/core';
 
 const TEMPORARY = 'temporary'
 const RENT = 'rent'
@@ -38,17 +38,16 @@ const HomePage = () => {
         <>
             <div className={styles.homePageContainer}>
                 <div className={styles.container}>
-                    <div style={{marginRight: '1rem', width: '20rem'}}>
+                    <div className={styles.accordionContainer}>
                         <ExpansionPanel title={"Dirección"}>
                             <form onSubmit={handleSearch}>
                                 <TextField
                                     fullWidth
                                     variant="outlined"
-                                    placeholder="Search Events"
+                                    placeholder="Buscar por dirección"
                                     value={searchText}
                                     onChange={(e) => setSearchText(e.target.value)}
                                     size="small"
-                                    inputProps={{ 'aria-label': 'search events' }}
                                 />
                                 <IconButton type="submit" aria-label="delete">
                                     <SearchIcon />

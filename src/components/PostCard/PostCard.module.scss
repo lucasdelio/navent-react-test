@@ -18,7 +18,8 @@
     }
 
     .costsContainer{
-        padding: 0.5rem 1rem;
+        padding: 0 1rem;
+        margin: 0.5rem 0;
     }
 
     .cost{
@@ -28,7 +29,7 @@
     }
 
     .expenses{
-        margin: 1rem 0 0 0;
+        margin-top: 0.5rem;
         font-weight: 400;
         font-size: .9rem;
         color: #6e6e6e;
@@ -40,21 +41,40 @@
 
     h2 {
         color: #1ea7dd;
-        font-weight: 400;
-        font-size: 1rem;
-        margin-bottom: .5rem;
+        font-weight: 500;
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
     }
 
     p {
         margin: 0.5rem 0; 
         font-weight: 400;
         font-size: 0.85rem;
+        line-height: 1.2rem;
         color: #848484;
+    }
+
+    .dateAndContactContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        button {
+            height: 3rem;
+            padding: 0 1rem;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 0.4rem;
+            background-color: #ed823f;
+        }
     }
 
     .location, .publish_date{
         font-weight: 500;
-        font-size: .9rem;
+        font-size: 0.95rem;
         color: #333;
     }
 }
@@ -67,7 +87,7 @@
     .imgContainer {
         img {
             width: unset;
-            height: 15rem;
+            height: 12rem;
         }
     }
 
@@ -78,6 +98,6 @@
     }
 
     .costsContainer {
-        border-right: 2px solid #dddcbd;
+        border-right: 2px solid #dad9bb;
     }
 }
