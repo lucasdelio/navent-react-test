@@ -7,32 +7,47 @@ import SearchIcon from '@material-ui/icons/Search';
 import { RadioGroup, Radio, FormControlLabel,
     FormControl, TextField, IconButton } from '@material-ui/core';
 
-const TEMPORARY = 'temporary'
-const RENT = 'rent'
-const BUY = 'buy'
-const ALL = 'all'
+const ALL = '0'
+const RENT = '1'
+const BUY_SELL = '2'
+const TEMPORARY = '3'
 
 const HomePage = () => {
     const [postings, setPostings] = useState([])
-    const [value, setValue] = useState(TEMPORARY);
+    const [operationType, setOperationType] = useState(ALL);
     const [searchText, setSearchText] = useState('')
-
-    function handleChange (event) {
-        setValue(event.target.value);
-    };
 
     useEffect(() => {
         setPostings(CONSTANTS.POSTINGS)
     }, [])
 
+    function handleOperationTypeChange (event) {
+        setOperationType(event.target.value)
+        appyFilters(event.target.value)
+    };
+
     function handleSearch(ev) {
         ev.preventDefault() //prevent default to use a hardcoded search instead fetch to api, and do not clean the form
-        setPostings(CONSTANTS.POSTINGS.filter( e=> {
-            //search the string manually in address, zone or city
-            let fullAddress = e.posting_location.address+e.posting_location.zone+e.posting_location.city
-            return fullAddress.toLowerCase().includes(searchText.toLowerCase())
-        }
-    ))};
+        appyFilters()
+    };
+
+    function appyFilters(operation = operationType){
+        setPostings(CONSTANTS.POSTINGS
+            .filter( e=> {
+                //search the string manually in address, zone or city
+                let fullAddress = e.posting_location.address+e.posting_location.zone+e.posting_location.city
+                return fullAddress.toLowerCase().includes(searchText.toLowerCase())
+            } )
+            .filter( e=> {
+                if(operation===ALL){
+                    return true;
+                }   
+                else{
+                    return operation === e.posting_prices[0].operation_type.toString()
+                }
+            } )
+        )
+    }
 
     return (
         <>
@@ -56,8 +71,8 @@ const HomePage = () => {
                         </ExpansionPanel>
                         <ExpansionPanel title={"Tipo de operación"}>
                             <FormControl component="fieldset">
-                                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                    <FormControlLabel value={BUY} control={<Radio />} label="Comprar" />
+                                <RadioGroup aria-label="operation_type" name="operation_type1" value={operationType} onChange={handleOperationTypeChange}>
+                                    <FormControlLabel value={BUY_SELL} control={<Radio />} label="Comprar" />
                                     <FormControlLabel value={RENT} control={<Radio />} label="Alquilar" />
                                     <FormControlLabel value={TEMPORARY} control={<Radio />} label="Temporal" />
                                     <FormControlLabel value={ALL} control={<Radio />} label="Todos" />
@@ -66,7 +81,12 @@ const HomePage = () => {
                         </ExpansionPanel>
                     </div>
                     <main>
-                        { postings.map( post => <PostCard key={post.posting_id} post={post} /> ) }                    
+                    
+                        { postings.length>0?
+                            postings.map( post => <PostCard key={post.posting_id} post={post} /> )
+                            :
+                            <div>No hay resultados.</div>
+                        }                    
                     </main>
                 </div>
             </div>
