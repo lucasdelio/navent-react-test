@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import CONSTANTS from '../../constants'
 import styles from './HomePage.module.scss'
 import PostCard from '../../components/PostCard/PostCard'
+import ContactModal from '../../components/ContactModal/ContactModal'
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel'
 import SearchIcon from '@material-ui/icons/Search';
+import { useDispatch } from 'react-redux'
 import { RadioGroup, Radio, FormControlLabel,
     FormControl, TextField, IconButton } from '@material-ui/core';
 
@@ -11,11 +13,13 @@ const ALL = '0'
 const RENT = '1'
 const BUY_SELL = '2'
 const TEMPORARY = '3'
+const NO_RESULTS = 'No hay resultados.'
 
 const HomePage = () => {
     const [postings, setPostings] = useState([])
     const [operationType, setOperationType] = useState(ALL);
     const [searchText, setSearchText] = useState('')
+    const dispatch = useDispatch()
 
     useEffect(() => {
         setPostings(CONSTANTS.POSTINGS)
@@ -51,6 +55,8 @@ const HomePage = () => {
 
     return (
         <>
+            <ContactModal/>
+
             <div className={styles.homePageContainer}>
                 <div className={styles.container}>
                     <div className={styles.accordionContainer}>
@@ -81,11 +87,10 @@ const HomePage = () => {
                         </ExpansionPanel>
                     </div>
                     <main>
-                    
                         { postings.length>0?
                             postings.map( post => <PostCard key={post.posting_id} post={post} /> )
                             :
-                            <div>No hay resultados.</div>
+                        <div>{NO_RESULTS}</div>
                         }                    
                     </main>
                 </div>

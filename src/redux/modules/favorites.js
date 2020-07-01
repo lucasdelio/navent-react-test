@@ -3,6 +3,7 @@ const SWAP_FAVORITE = 'swap_favorite'
 
 // Reducer
 const favoritesReducer = (state = [], action) => {
+    console.log('favoritesReducer')
     switch(action.type) {
         case SWAP_FAVORITE:
             let copy = [...state]

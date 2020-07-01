@@ -8,6 +8,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { IconButton } from '@material-ui/core';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import { favoritesSelector, swapFavorite } from './../../redux/modules/favorites'
+import { setShowContactDialog } from './../../redux/modules/contactDialog'
 
 const SUPERHIGHLIGHTED = 'SUPERHIGHLIGHTED'
 const HIGHLIGHTED = 'HIGHLIGHTED'
@@ -28,6 +29,7 @@ function getPublishTimeFromNow(date) {
 }
 
 export default function PostCard({ post }) {
+
     const {
         posting_picture,
         posting_slug,
@@ -40,6 +42,10 @@ export default function PostCard({ post }) {
     const { price, expenses } = post.posting_prices[0]
     const favorites = useSelector(favoritesSelector, shallowEqual)
     const dispatch = useDispatch()
+
+    function handleClickOpenContact(){
+        dispatch(setShowContactDialog(true))
+    }
 
     return (
         <section className={styles.postCard} style={getPublicationPlanColor(post.publication_plan)}>
@@ -74,7 +80,7 @@ export default function PostCard({ post }) {
                         <RestoreIcon />
                         {getPublishTimeFromNow(publish_date)}
                     </div>
-                    <button onClick={()=>{}}>Contactar</button>
+                    <button onClick={handleClickOpenContact}>Contactar</button>
                 </div>
             </div>
         </section>
