@@ -15,7 +15,9 @@ const HomePage = () => {
         <>
             <div className={styles.homePageContainer}>
                 <div className={styles.container}>
-                    <nav>nav</nav>
+                    <nav style={{width:'15rem', minWidth:'15rem', marginRight:'1rem'}}>
+                        <div style={{width:'100%', height:'20rem', background:'#ccc'}}>Nav</div>
+                    </nav>
                     <main>
                         { postings.map( post => <PostCard key={post.posting_id} post={post} /> ) }                    
                     </main>
