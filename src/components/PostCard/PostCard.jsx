@@ -6,7 +6,7 @@ import moment from 'moment/min/moment-with-locales'
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { IconButton } from '@material-ui/core';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { favoritesSelector, swapFavorite } from './../../redux/modules/favorites'
 import { setShowContactDialog } from './../../redux/modules/contactDialog'
 
@@ -40,11 +40,11 @@ export default function PostCard({ post }) {
     } = post
 
     const { price, expenses } = post.posting_prices[0]
-    const favorites = useSelector(favoritesSelector, shallowEqual)
+    const favorites = useSelector(favoritesSelector)
     const dispatch = useDispatch()
 
     function handleClickOpenContact(){
-        dispatch(setShowContactDialog(true))
+        dispatch(setShowContactDialog({visible: true, postId: post.posting_id}))
     }
 
     return (

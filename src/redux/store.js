@@ -2,12 +2,14 @@ import { combineReducers, createStore } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import favoritesReducer from './modules/favorites'
+import contactsReducer from './modules/contacts'
 import contactDialogReducer from './modules/contactDialog'
 
 function getRootReducer(){
   return combineReducers({
     favoritesReducer,
     contactDialogReducer,
+    contactsReducer,
   });
 };
 

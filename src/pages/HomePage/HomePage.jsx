@@ -56,7 +56,6 @@ const HomePage = () => {
     return (
         <>
             <ContactModal/>
-
             <div className={styles.homePageContainer}>
                 <div className={styles.container}>
                     <div className={styles.accordionContainer}>
