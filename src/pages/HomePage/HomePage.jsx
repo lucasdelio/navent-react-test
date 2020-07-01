@@ -7,7 +7,6 @@ const HomePage = () => {
     const [postings, setPostings] = useState([])
 
     useEffect(() => {
-        console.log(CONSTANTS.POSTINGS)
         setPostings(CONSTANTS.POSTINGS)
     }, [])
 
