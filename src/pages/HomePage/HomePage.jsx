@@ -5,21 +5,13 @@ import PostCard from '../../components/PostCard/PostCard'
 import ContactModal from '../../components/ContactModal/ContactModal'
 import ExpansionPanel from '../../components/ExpansionPanel/ExpansionPanel'
 import SearchIcon from '@material-ui/icons/Search';
-import { useDispatch } from 'react-redux'
 import { RadioGroup, Radio, FormControlLabel,
     FormControl, TextField, IconButton } from '@material-ui/core';
 
-const ALL = '0'
-const RENT = '1'
-const BUY_SELL = '2'
-const TEMPORARY = '3'
-const NO_RESULTS = 'No hay resultados.'
-
 const HomePage = () => {
     const [postings, setPostings] = useState([])
-    const [operationType, setOperationType] = useState(ALL);
+    const [operationType, setOperationType] = useState(CONSTANTS.ALL);
     const [searchText, setSearchText] = useState('')
-    const dispatch = useDispatch()
 
     useEffect(() => {
         setPostings(CONSTANTS.POSTINGS)
@@ -35,6 +27,7 @@ const HomePage = () => {
         appyFilters()
     };
 
+    /* This method applies both filters, by address and by operation type*/
     function appyFilters(operation = operationType){
         setPostings(CONSTANTS.POSTINGS
             .filter( e=> {
@@ -43,7 +36,7 @@ const HomePage = () => {
                 return fullAddress.toLowerCase().includes(searchText.toLowerCase())
             } )
             .filter( e=> {
-                if(operation===ALL){
+                if(operation===CONSTANTS.ALL){
                     return true;
                 }   
                 else{
@@ -77,10 +70,10 @@ const HomePage = () => {
                         <ExpansionPanel title={"Tipo de operación"}>
                             <FormControl component="fieldset">
                                 <RadioGroup aria-label="operation_type" name="operation_type1" value={operationType} onChange={handleOperationTypeChange}>
-                                    <FormControlLabel value={BUY_SELL} control={<Radio />} label="Comprar" />
-                                    <FormControlLabel value={RENT} control={<Radio />} label="Alquilar" />
-                                    <FormControlLabel value={TEMPORARY} control={<Radio />} label="Temporal" />
-                                    <FormControlLabel value={ALL} control={<Radio />} label="Todos" />
+                                    <FormControlLabel value={CONSTANTS.BUY_SELL} control={<Radio />} label="Comprar" />
+                                    <FormControlLabel value={CONSTANTS.RENT} control={<Radio />} label="Alquilar" />
+                                    <FormControlLabel value={CONSTANTS.TEMPORARY} control={<Radio />} label="Temporal" />
+                                    <FormControlLabel value={CONSTANTS.ALL} control={<Radio />} label="Todos" />
                                 </RadioGroup>
                             </FormControl>
                         </ExpansionPanel>
@@ -89,7 +82,7 @@ const HomePage = () => {
                         { postings.length>0?
                             postings.map( post => <PostCard key={post.posting_id} post={post} /> )
                             :
-                        <div>{NO_RESULTS}</div>
+                        <div>{CONSTANTS.NO_RESULTS}</div>
                         }                    
                     </main>
                 </div>

@@ -4,6 +4,8 @@ const SWAP_FAVORITE = 'swap_favorite'
 // Reducer
 const favoritesReducer = (state = [], action) => {
     switch(action.type) {
+        // if the favorite is not in the array add it
+        // if it's already in favorites remove it
         case SWAP_FAVORITE:
             let copy = [...state]
             const index = copy.indexOf(action.id);

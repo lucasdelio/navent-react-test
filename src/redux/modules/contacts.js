@@ -1,6 +1,8 @@
 // Actions
 const SEND_MESSAGE = 'SEND_MESSAGE'
 
+/* This reducer stores the post id's that we already sent a message*/
+
 // Reducer
 const contactsReducer = (state = [], action) => {
     switch(action.type) {

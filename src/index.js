@@ -5,7 +5,8 @@ import { Provider } from "react-redux";
 import {store, persistor} from "./redux/store";
 import Router from "./route";
 import "./globals.scss";
-import moment from 'moment/min/moment-with-locales'
+import moment from 'moment'
+import 'moment/min/locales'
 import { PersistGate } from 'redux-persist/integration/react'
 
 //set the moment language to spanish

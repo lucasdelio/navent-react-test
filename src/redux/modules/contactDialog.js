@@ -1,6 +1,8 @@
 // Actions
 const SHOW_CONTACTS_DIALOG = 'SHOW_CONTACTS_DIALOG'
 
+/* This reducer is to store the state of the Contact Modal*/
+
 // Reducer
 const contactDialogReducer = ( state = {visible: false, postId: ''}, action) => {
     switch (action.type) {

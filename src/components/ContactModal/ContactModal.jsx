@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { validateEmail } from '../../utils/utils'
 import styles from './ContactModal.module.scss'
@@ -19,6 +19,7 @@ export default function ContactModal(){
     const postId = useSelector(contactDialogPostIdSelector)
     const sentMessages = useSelector(contactsSelector)
     
+    //TODO: improve this. messageAlreadySent value should be stored in a state
     const index = sentMessages.indexOf(postId);
     const messageAlreadySent = index > -1
 

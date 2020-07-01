@@ -5,17 +5,21 @@ import favoritesReducer from './modules/favorites'
 import contactsReducer from './modules/contacts'
 import contactDialogReducer from './modules/contactDialog'
 
+/* this configuration will persist all the reducers in local storage
+    TODO: Only persist in storage the required reducers
+*/
+
 function getRootReducer(){
-  return combineReducers({
-    favoritesReducer,
-    contactDialogReducer,
-    contactsReducer,
-  });
+    return combineReducers({
+        favoritesReducer,
+        contactDialogReducer,
+        contactsReducer,
+    });
 };
 
 const persistConfig = {
-  key: 'root',
-  storage,
+    key: 'root',
+    storage,
 }
 
 const persistedReducer = persistReducer(persistConfig, getRootReducer())
