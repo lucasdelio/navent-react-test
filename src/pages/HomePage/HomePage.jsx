@@ -49,7 +49,7 @@ const HomePage = () => {
                                     onChange={(e) => setSearchText(e.target.value)}
                                     size="small"
                                 />
-                                <IconButton type="submit" aria-label="delete">
+                                <IconButton type="submit" aria-label="search">
                                     <SearchIcon />
                                 </IconButton>
                             </form>

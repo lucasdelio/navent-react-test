@@ -3,6 +3,9 @@ import styles from './PostCard.module.scss'
 import {numberWithCommas} from '../../utils/utils'
 import moment from 'moment/min/moment-with-locales'
 // import LinesEllipsis from 'react-lines-ellipsis'
+import RestoreIcon from '@material-ui/icons/Restore';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import { IconButton } from '@material-ui/core';
 
 const SUPERHIGHLIGHTED = 'SUPERHIGHLIGHTED'
 const HIGHLIGHTED = 'HIGHLIGHTED'
@@ -18,7 +21,7 @@ function getPublicationPlanColor(plan) {
 }
 
 function getPublishTimeFromNow(date) {
-    return 'publicado '+ moment(date, "DDMMYYYY").fromNow()
+    return 'Publicado '+ moment(date, "DDMMYYYY").fromNow()
 }
 
 export default function PostCard({ post }) {
@@ -36,6 +39,9 @@ export default function PostCard({ post }) {
     return (
         <section className={styles.postCard} style={getPublicationPlanColor(post.publication_plan)}>
             <div className={styles.imgContainer}>
+                <IconButton className={styles.favoriteButton}>
+                    <FavoriteBorderIcon style={{color: '#3b3b3b'}} />
+                </IconButton>
                 <img src={posting_picture} alt={posting_slug}/>
                 <div className={styles.costsContainer}>
                     <div className={styles.cost}>$ { numberWithCommas(price.amount) }</div>
@@ -59,7 +65,10 @@ export default function PostCard({ post }) {
                         trimRight
                     /> */}
                 <div className={styles.dateAndContactContainer}>
-                    <div className={styles.publish_date}>{getPublishTimeFromNow(publish_date)}</div>
+                    <div className={styles.publishDate}>
+                        <RestoreIcon />
+                        {getPublishTimeFromNow(publish_date)}
+                    </div>
                     <button onClick={()=>{}}>Contactar</button>
                 </div>
             </div>

@@ -11,7 +11,19 @@
 }
 
 .imgContainer {
+    position: relative;
     width: 100%;
+
+    .favoriteButton {
+        position: absolute;
+        right: 0;
+        padding: 0.3rem;
+        margin: 0.3rem;
+        background-color: #fff;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
     img {
         width: 100%;
@@ -69,13 +81,27 @@
             border: none;
             border-radius: 0.4rem;
             background-color: #ed823f;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 
-    .location, .publish_date{
+    .location, .publishDate{
         font-weight: 500;
         font-size: 0.95rem;
         color: #333;
+    }
+
+    .publishDate {
+        display: flex;
+        align-items: center;
+
+        svg {
+            width: 1.2rem;
+            height: 1.2rem;
+            margin-right: 0.2rem;
+        }
     }
 }
 
