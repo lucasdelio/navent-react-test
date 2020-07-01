@@ -1,17 +1,17 @@
 import React from 'react';
-import {ExpansionPanelDetails, ExpansionPanelSummary, ExpansionPanel} from '@material-ui/core';
+import {AccordionDetails, AccordionSummary, Accordion} from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 export default function MUExpansionPanel ({title, children}) {
     return (
-        <ExpansionPanel defaultExpanded={true}>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+        <Accordion defaultExpanded={true}>
+            <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                 <h1>{title && title}</h1>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails >
+            </AccordionSummary>
+            <AccordionDetails  >
                 {children}
-            </ExpansionPanelDetails>
-        </ExpansionPanel>
+            </AccordionDetails>
+        </Accordion>
     );
 }
 

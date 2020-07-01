@@ -17,7 +17,7 @@ const HomePage = () => {
     const [value, setValue] = useState(TEMPORARY);
     const [searchText, setSearchText] = useState('')
 
-    const handleChange = (event) => {
+    function handleChange (event) {
         setValue(event.target.value);
     };
 
@@ -25,24 +25,35 @@ const HomePage = () => {
         setPostings(CONSTANTS.POSTINGS)
     }, [])
 
+    function handleSearch(ev) {
+        ev.preventDefault() //prevent default to use a hardcoded search instead fetch to api, and do not clean the form
+        setPostings(CONSTANTS.POSTINGS.filter( e=> {
+            //search the string manually in address, zone or city
+            let fullAddress = e.posting_location.address+e.posting_location.zone+e.posting_location.city
+            return fullAddress.toLowerCase().includes(searchText.toLowerCase())
+        }
+    ))};
+
     return (
         <>
             <div className={styles.homePageContainer}>
                 <div className={styles.container}>
                     <div style={{marginRight: '1rem', width: '20rem'}}>
                         <ExpansionPanel title={"Dirección"}>
-                            <TextField
-                                fullWidth
-                                variant="outlined"
-                                placeholder="Search Events"
-                                value={searchText}
-                                onChange={(e) => setSearchText(e.target.value)}
-                                size="small"
-                                inputProps={{ 'aria-label': 'search events' }}
-                            />
-                            <IconButton aria-label="delete">
-                                <SearchIcon />
-                            </IconButton>
+                            <form onSubmit={handleSearch}>
+                                <TextField
+                                    fullWidth
+                                    variant="outlined"
+                                    placeholder="Search Events"
+                                    value={searchText}
+                                    onChange={(e) => setSearchText(e.target.value)}
+                                    size="small"
+                                    inputProps={{ 'aria-label': 'search events' }}
+                                />
+                                <IconButton type="submit" aria-label="delete">
+                                    <SearchIcon />
+                                </IconButton>
+                            </form>
                         </ExpansionPanel>
                         <ExpansionPanel title={"Tipo de operación"}>
                             <FormControl component="fieldset">
