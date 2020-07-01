@@ -1,6 +1,4 @@
 // Actions
-const ADD_FAVORITE = 'add_favorite'
-const REMOVE_FAVORITE = 'remove_favorite'
 const SWAP_FAVORITE = 'swap_favorite'
 
 // Reducer

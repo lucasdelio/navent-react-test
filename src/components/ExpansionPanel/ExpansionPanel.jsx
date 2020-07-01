@@ -6,7 +6,7 @@ import styles from './ExpansionPanel.module.scss'
 export default function MUExpansionPanel ({title, children}) {
     return (
         <Accordion defaultExpanded={true}>
-            <AccordionSummary  expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+            <AccordionSummary  expandIcon={<ExpandMoreIcon />}>
                 <label className={styles.accordionTitle}>{title && title}</label>
             </AccordionSummary>
             <AccordionDetails  >

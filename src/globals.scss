@@ -12,3 +12,17 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+// Variables
+:root {
+  --card-shadow: 0px 3px 9px 4px rgba(0, 0, 0, 0.15);
+  --button-shadow: 0 0 3px 0px rgba(0, 0, 0, 0.2);
+
+  --dark-grey: #333;
+  --light-grey: #6e6e6e;
+  --light-blue: #1ea7dd;
+  --orange: #ed823f;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+}
