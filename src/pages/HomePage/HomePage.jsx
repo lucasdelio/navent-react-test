@@ -49,6 +49,7 @@ const HomePage = () => {
     return (
         <>
             <ContactModal/>
+            {/* TODO: search and filters can be moved into a new component */}
             <div className={styles.homePageContainer}>
                 <div className={styles.container}>
                     <div className={styles.accordionContainer}>
