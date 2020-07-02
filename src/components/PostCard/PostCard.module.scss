@@ -59,11 +59,16 @@
     }
 
     p {
-        margin: 0.5rem 0; 
+        margin: 1.5rem 0; 
         font-weight: var(--font-regular);
         font-size: 0.85rem;
-        line-height: 1.2rem;
+        line-height: 1.3rem;
         color: var(--light-grey);
+        // trims text and add '...'
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4; // max lines number
+        -webkit-box-orient: vertical;
     }
 
     .dateAndContactContainer {

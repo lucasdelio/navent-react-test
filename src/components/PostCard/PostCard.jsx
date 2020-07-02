@@ -62,14 +62,7 @@ export default function PostCard({ post }) {
                     <h2>{ title }</h2>
                     <span className={styles.location}>{ posting_location.address }, { posting_location.zone }, { posting_location.city }</span>
                 </div>
-                    {/* TODO: display this description using trimmed text */}
                     <p>{ posting_description }</p>
-                    {/* <LinesEllipsis
-                        text={ posting_description }
-                        maxLine='4'
-                        basedOn='words'
-                        component='p'
-                    /> */}
                 <div className={styles.dateAndContactContainer}>
                     <div className={styles.publishDate}>
                         <RestoreIcon />

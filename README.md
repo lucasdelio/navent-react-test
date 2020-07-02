@@ -19,7 +19,6 @@ yarn install && yarn start
 
 ## TODO's
 - Redux store: Only persist in storage the required reducers
-- PostCard: Display the post description using trimmed text with a library like `LinesEllipsis`
 - Home Page: Search and filters can be moved into a new component
 - Contact Modal: Constant messageAlreadySent value should be stored in a state
 - Contact Modal: The modal close animation has a visual defect, this may be related to the messageAlreadySent variable
