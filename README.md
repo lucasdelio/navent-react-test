@@ -6,6 +6,7 @@ yarn install && yarn start
 ``` 
 ## Additions to demo requirements
 - Responsive design for Mobile & Tablet
+- The project is deployed at [matchmusic.world](https://matchmusic.world/) for preview
 
 ## Libraries used
 - react-redux
